@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="FreelanceHub">
+    <output-path>$PROJECT_DIR$/out/artifacts/FreelanceHub</output-path>
+    <root id="root">
+      <element id="archive" name="FreelanceHub.jar">
+        <element id="module-output" name="FreelanceHub" />
+      </element>
+    </root>
+  </artifact>
+</component>
