@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 
     private String dashboardPath(String role) {
         if ("admin".equalsIgnoreCase(role)) {
-            return "/views/admin/dashboard.jsp";
+            return "/admin/dashboard";
         }
         if ("client".equalsIgnoreCase(role)) {
             return "/views/client/dashboard.jsp";
