@@ -60,4 +60,30 @@ public class UserDAO {
             return -1;
         }
     }
+
+    public int countUsers(Connection connection) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM users";
+        try (PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+            return resultSet.next() ? resultSet.getInt(1) : 0;
+        }
+    }
+
+    public int countUsersByRole(Connection connection, String role) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM users WHERE role = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, role);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                return resultSet.next() ? resultSet.getInt(1) : 0;
+            }
+        }
+    }
+
+    public String findLatestUserName(Connection connection) throws SQLException {
+        String sql = "SELECT name FROM users ORDER BY created_at DESC LIMIT 1";
+        try (PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+            return resultSet.next() ? resultSet.getString("name") : null;
+        }
+    }
 }
