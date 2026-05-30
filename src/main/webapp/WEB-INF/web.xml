@@ -29,6 +29,14 @@
         <filter-name>AuthFilter</filter-name>
         <url-pattern>/views/freelancer/*</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/client/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/freelancer/*</url-pattern>
+    </filter-mapping>
 
     <filter>
         <filter-name>AdminFilter</filter-name>
@@ -37,6 +45,10 @@
     <filter-mapping>
         <filter-name>AdminFilter</filter-name>
         <url-pattern>/views/admin/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
     </filter-mapping>
 
     <servlet>
@@ -73,6 +85,33 @@
     <servlet-mapping>
         <servlet-name>DbTestServlet</servlet-name>
         <url-pattern>/db-test</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>com.freelancehub.freelancehub.controller.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/admin/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClientDashboardServlet</servlet-name>
+        <servlet-class>com.freelancehub.freelancehub.controller.ClientDashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClientDashboardServlet</servlet-name>
+        <url-pattern>/client/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FreelancerDashboardServlet</servlet-name>
+        <servlet-class>com.freelancehub.freelancehub.controller.FreelancerDashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FreelancerDashboardServlet</servlet-name>
+        <url-pattern>/freelancer/dashboard</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
