@@ -57,9 +57,9 @@ public class LoginServlet extends HttpServlet {
             return "/admin/dashboard";
         }
         if ("client".equalsIgnoreCase(role)) {
-            return "/views/client/dashboard.jsp";
+            return "/client/dashboard";
         }
-        return "/views/freelancer/dashboard.jsp";
+        return "/freelancer/dashboard";
     }
 
     private String trim(String value) {
