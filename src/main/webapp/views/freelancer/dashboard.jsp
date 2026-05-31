@@ -55,7 +55,7 @@
         <div class="panel">
             <h2>Quick Actions</h2>
             <div class="action-grid">
-                <a class="action-card" href="${pageContext.request.contextPath}/views/freelancer/browse-projects.jsp">Browse Projects</a>
+                <a class="action-card" href="${pageContext.request.contextPath}/freelancer/projects">Browse Projects</a>
                 <a class="action-card" href="${pageContext.request.contextPath}/views/freelancer/my-bids.jsp">My Bids</a>
                 <a class="action-card" href="${pageContext.request.contextPath}/views/freelancer/my-contracts.jsp">My Contracts</a>
                 <a class="action-card" href="${pageContext.request.contextPath}/views/freelancer/profile.jsp">Edit Profile</a>
