@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 
             response.sendRedirect(request.getContextPath() + dashboardPath(user.getRole()));
         } catch (Exception exception) {
-            request.setAttribute("error", "Login failed. Please try again.");
+            request.setAttribute("error", "Login failed: " + exception.getMessage());
             request.getRequestDispatcher("/views/login.jsp").forward(request, response);
         }
     }
