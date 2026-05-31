@@ -121,6 +121,21 @@ public class ProjectDAO {
         }
     }
 
+    public List<Project> listOpenProjects(Connection connection, int limit) throws SQLException {
+        String sql = "SELECT id, client_id, title, description, budget, deadline, status, created_at " +
+                "FROM projects WHERE status = 'open' ORDER BY created_at DESC LIMIT ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, limit);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                List<Project> projects = new ArrayList<>();
+                while (resultSet.next()) {
+                    projects.add(mapProject(resultSet));
+                }
+                return projects;
+            }
+        }
+    }
+
     private Project mapProject(ResultSet resultSet) throws SQLException {
         Project project = new Project();
         project.setId(resultSet.getInt("id"));
