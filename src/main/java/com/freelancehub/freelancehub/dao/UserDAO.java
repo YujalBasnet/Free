@@ -86,4 +86,29 @@ public class UserDAO {
             return resultSet.next() ? resultSet.getString("name") : null;
         }
     }
+
+    public java.util.List<User> listUsersByRole(Connection connection, String role, int limit) throws SQLException {
+        String sql = "SELECT id, name, email, password, role, created_at FROM users WHERE role = ? ORDER BY created_at DESC LIMIT ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, role);
+            statement.setInt(2, limit);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                java.util.List<User> users = new java.util.ArrayList<>();
+                while (resultSet.next()) {
+                    User user = new User();
+                    user.setId(resultSet.getInt("id"));
+                    user.setName(resultSet.getString("name"));
+                    user.setEmail(resultSet.getString("email"));
+                    user.setPasswordHash(resultSet.getString("password"));
+                    user.setRole(resultSet.getString("role"));
+                    java.sql.Timestamp createdAt = resultSet.getTimestamp("created_at");
+                    if (createdAt != null) {
+                        user.setCreatedAt(createdAt.toLocalDateTime());
+                    }
+                    users.add(user);
+                }
+                return users;
+            }
+        }
+    }
 }
