@@ -61,7 +61,7 @@ public class RegisterServlet extends HttpServlet {
 
             response.sendRedirect(request.getContextPath() + "/login");
         } catch (Exception exception) {
-            request.setAttribute("error", "Registration failed. Please try again.");
+            request.setAttribute("error", "Registration failed: " + exception.getMessage());
             request.getRequestDispatcher("/views/register.jsp").forward(request, response);
         }
     }
