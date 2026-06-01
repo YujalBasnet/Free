@@ -44,6 +44,7 @@
                     <th>Description</th>
                     <th>Budget</th>
                     <th>Deadline</th>
+                    <th>Place Bid</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -51,8 +52,16 @@
                 <tr>
                     <td><%= project.getTitle() %></td>
                     <td><%= project.getDescription() %></td>
-                    <td>$<%= String.format("%.2f", project.getBudget()) %></td>
+                    <td>NPR <%= String.format("%.2f", project.getBudget()) %></td>
                     <td><%= project.getDeadline() == null ? "-" : project.getDeadline().toString() %></td>
+                    <td>
+                        <form class="bid-form" method="post" action="${pageContext.request.contextPath}/freelancer/bids/new">
+                            <input type="hidden" name="projectId" value="<%= project.getId() %>" />
+                            <input type="number" name="bidAmount" step="0.01" min="0" placeholder="Your bid (NPR)" required />
+                            <textarea name="proposal" rows="3" placeholder="Short proposal" required></textarea>
+                            <button class="primary-btn" type="submit">Submit Bid</button>
+                        </form>
+                    </td>
                 </tr>
                 <% } %>
                 </tbody>
