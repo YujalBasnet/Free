@@ -46,6 +46,7 @@
                     <th>Bid (NPR)</th>
                     <th>Status</th>
                     <th>Submitted</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,6 +58,18 @@
                     <td>NPR <%= String.format("%.2f", bid.getBidAmount()) %></td>
                     <td><span class="status-pill"><%= bid.getStatus() %></span></td>
                     <td><%= bid.getCreatedAt() == null ? "-" : bid.getCreatedAt().toLocalDate().toString() %></td>
+                    <td>
+                        <div class="action-buttons">
+                            <form method="post" action="${pageContext.request.contextPath}/client/bids/accept">
+                                <input type="hidden" name="bidId" value="<%= bid.getId() %>" />
+                                <button class="btn-accept" type="submit">Accept</button>
+                            </form>
+                            <form method="post" action="${pageContext.request.contextPath}/client/bids/reject">
+                                <input type="hidden" name="bidId" value="<%= bid.getId() %>" />
+                                <button class="btn-reject" type="submit">Reject</button>
+                            </form>
+                        </div>
+                    </td>
                 </tr>
                 <% } %>
                 </tbody>
