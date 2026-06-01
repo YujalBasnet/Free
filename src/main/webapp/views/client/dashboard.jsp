@@ -59,7 +59,7 @@
             <div class="action-grid">
                 <a class="action-card" href="${pageContext.request.contextPath}/client/projects/new">Post New Project</a>
                 <a class="action-card" href="${pageContext.request.contextPath}/client/projects">View My Projects</a>
-                <a class="action-card" href="${pageContext.request.contextPath}/views/client/view-bids.jsp">View Received Bids</a>
+                <a class="action-card" href="${pageContext.request.contextPath}/client/bids">View Received Bids</a>
                 <a class="action-card" href="${pageContext.request.contextPath}/views/client/contracts.jsp">Active Contracts</a>
             </div>
         </div>
