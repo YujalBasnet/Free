@@ -82,4 +82,65 @@ public class BidDAO {
         }
         return null;
     }
+
+    public boolean hasBidForProject(Connection connection, int projectId, int freelancerId) throws SQLException {
+        String sql = "SELECT 1 FROM bids WHERE project_id = ? AND freelancer_id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, projectId);
+            statement.setInt(2, freelancerId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                return resultSet.next();
+            }
+        }
+    }
+
+    public int createBid(Connection connection, int projectId, int freelancerId, String proposal, double bidAmount) throws SQLException {
+        String sql = "INSERT INTO bids (project_id, freelancer_id, proposal, bid_amount, status) VALUES (?, ?, ?, ?, 'pending')";
+        try (PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+            statement.setInt(1, projectId);
+            statement.setInt(2, freelancerId);
+            statement.setString(3, proposal);
+            statement.setDouble(4, bidAmount);
+            int updated = statement.executeUpdate();
+            if (updated == 0) {
+                return -1;
+            }
+            try (ResultSet keys = statement.getGeneratedKeys()) {
+                return keys.next() ? keys.getInt(1) : -1;
+            }
+        }
+    }
+
+    public java.util.List<com.freelancehub.freelancehub.model.Bid> listBidsForClient(Connection connection, int clientId) throws SQLException {
+        String sql = "SELECT b.id, b.project_id, b.freelancer_id, b.proposal, b.bid_amount, b.status, b.created_at, "
+                + "p.title AS project_title, u.name AS freelancer_name "
+                + "FROM bids b "
+                + "JOIN projects p ON b.project_id = p.id "
+                + "JOIN users u ON b.freelancer_id = u.id "
+                + "WHERE p.client_id = ? "
+                + "ORDER BY b.created_at DESC";
+        java.util.List<com.freelancehub.freelancehub.model.Bid> bids = new java.util.ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, clientId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    com.freelancehub.freelancehub.model.Bid bid = new com.freelancehub.freelancehub.model.Bid();
+                    bid.setId(resultSet.getInt("id"));
+                    bid.setProjectId(resultSet.getInt("project_id"));
+                    bid.setFreelancerId(resultSet.getInt("freelancer_id"));
+                    bid.setProposal(resultSet.getString("proposal"));
+                    bid.setBidAmount(resultSet.getDouble("bid_amount"));
+                    bid.setStatus(resultSet.getString("status"));
+                    java.sql.Timestamp createdAt = resultSet.getTimestamp("created_at");
+                    if (createdAt != null) {
+                        bid.setCreatedAt(createdAt.toLocalDateTime());
+                    }
+                    bid.setProjectTitle(resultSet.getString("project_title"));
+                    bid.setFreelancerName(resultSet.getString("freelancer_name"));
+                    bids.add(bid);
+                }
+            }
+        }
+        return bids;
+    }
 }
