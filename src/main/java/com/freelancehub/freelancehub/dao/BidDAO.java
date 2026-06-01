@@ -143,4 +143,16 @@ public class BidDAO {
         }
         return bids;
     }
+
+    public boolean updateBidStatusForClient(Connection connection, int bidId, int clientId, String status) throws SQLException {
+        String sql = "UPDATE bids b JOIN projects p ON b.project_id = p.id "
+                + "SET b.status = ? "
+                + "WHERE b.id = ? AND p.client_id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, status);
+            statement.setInt(2, bidId);
+            statement.setInt(3, clientId);
+            return statement.executeUpdate() > 0;
+        }
+    }
 }
