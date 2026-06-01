@@ -1,4 +1,4 @@
 package com.freelancehub.freelancehub.controller;
 
-public class RehectBidServlet {
+public class RejectBidServlet {
 }
