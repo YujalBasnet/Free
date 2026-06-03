@@ -111,7 +111,7 @@
     <div class="card">
         <div class="brand">FreelanceHub</div>
         <div class="title">Create account</div>
-        <div class="subtitle">Join and start hiring or freelancing today.</div>
+        <div class="subtitle">Join and start hiring or freelancing Today.</div>
         <%
             String error = (String) request.getAttribute("error");
             if (error != null) {
