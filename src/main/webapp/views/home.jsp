@@ -26,7 +26,7 @@
     <div class="container hero-grid">
         <div>
             <p class="eyebrow">Marketplace for clients & freelancers</p>
-            <h1>Build teams and ship projects faster</h1>
+            <h1>Build teams and ship projects faster than ever</h1>
             <p class="hero-subtitle">FreelanceHub connects you with verified freelancers for design, development, marketing, and more.</p>
             <form class="search-bar" action="${pageContext.request.contextPath}/login" method="get">
                 <input type="text" name="q" placeholder="Try: Full-stack developer, UI designer, SEO" />
