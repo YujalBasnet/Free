@@ -6,7 +6,7 @@
 
     <context-param>
         <param-name>db.url</param-name>
-        <param-value>jdbc:mysql://localhost:3306/freelancehub?useSSL=false&amp;serverTimezone=UTC</param-value>
+        <param-value>jdbc:mysql://localhost:3306/freelancehub?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</param-value>
     </context-param>
     <context-param>
         <param-name>db.user</param-name>
@@ -114,7 +114,74 @@
         <url-pattern>/freelancer/dashboard</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AddProjectServlet</servlet-name>
+        <servlet-class>com.freelancehub.freelancehub.controller.AddProjectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddProjectServlet</servlet-name>
+        <url-pattern>/client/projects/new</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProjectServlet</servlet-name>
+        <servlet-class>com.freelancehub.freelancehub.controller.ProjectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProjectServlet</servlet-name>
+        <url-pattern>/client/projects</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProjectServlet</servlet-name>
+        <url-pattern>/freelancer/projects</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>com.freelancehub.freelancehub.controller.HomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BidServlet</servlet-name>
+        <servlet-class>com.freelancehub.freelancehub.controller.BidServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BidServlet</servlet-name>
+        <url-pattern>/freelancer/bids/new</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClientBidsServlet</servlet-name>
+        <servlet-class>com.freelancehub.freelancehub.controller.ClientBidsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClientBidsServlet</servlet-name>
+        <url-pattern>/client/bids</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AcceptBidServlet</servlet-name>
+        <servlet-class>com.freelancehub.freelancehub.controller.AcceptBidServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AcceptBidServlet</servlet-name>
+        <url-pattern>/client/bids/accept</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RejectBidServlet</servlet-name>
+        <servlet-class>com.freelancehub.freelancehub.controller.RejectBidServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RejectBidServlet</servlet-name>
+        <url-pattern>/client/bids/reject</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>home</welcome-file>
     </welcome-file-list>
 </web-app>
