@@ -132,7 +132,7 @@
             <button class="button" type="submit">Login</button>
         </form>
         <div class="footer">
-            No account? <a href="<%= request.getContextPath() %>/register">Register here</a>
+            No account? <a href="<%= request.getContextPath() %>/register">Register Here</a>
         </div>
     </div>
 </div>
