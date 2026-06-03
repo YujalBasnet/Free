@@ -34,7 +34,7 @@
                     (java.util.List<com.freelancehub.freelancehub.model.Bid>) request.getAttribute("bids");
         %>
         <% if (bids == null || bids.isEmpty()) { %>
-        <p class="empty-state">No bids received yet. Check back soon.</p>
+        <p class="empty-state">No bids received. Check back soon.</p>
         <% } else { %>
         <div class="table-wrapper">
             <table class="data-table">
