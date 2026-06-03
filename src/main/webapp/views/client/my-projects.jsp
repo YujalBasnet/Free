@@ -17,7 +17,7 @@
     <header class="client-header">
         <div>
             <p class="eyebrow">Client Workspace</p>
-            <h1>My Projects</h1>
+            <h1>Mine Projects</h1>
             <p class="subtitle">Track every project you have posted.</p>
         </div>
         <div class="client-meta">
