@@ -61,7 +61,7 @@
         <div class="panel">
             <h2>Quick Actions</h2>
             <div class="action-grid">
-                <a class="action-card" href="${pageContext.request.contextPath}/views/admin/users.jsp">Manage Users</a>
+                <a class="action-card" href="${pageContext.request.contextPath}/admin/users">Manage Users</a>
                 <a class="action-card" href="${pageContext.request.contextPath}/views/admin/projects.jsp">Manage Projects</a>
                 <a class="action-card" href="${pageContext.request.contextPath}/views/admin/reports.jsp">Manage Reports</a>
                 <a class="action-card" href="${pageContext.request.contextPath}/views/admin/analytics.jsp">View Reviews</a>
