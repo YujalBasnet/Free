@@ -111,4 +111,27 @@ public class UserDAO {
             }
         }
     }
+
+    public java.util.List<User> listNonAdminUsers(Connection connection) throws SQLException {
+        String sql = "SELECT id, name, email, password, role, created_at FROM users WHERE role <> 'admin' ORDER BY created_at DESC";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            try (ResultSet resultSet = statement.executeQuery()) {
+                java.util.List<User> users = new java.util.ArrayList<>();
+                while (resultSet.next()) {
+                    User user = new User();
+                    user.setId(resultSet.getInt("id"));
+                    user.setName(resultSet.getString("name"));
+                    user.setEmail(resultSet.getString("email"));
+                    user.setPasswordHash(resultSet.getString("password"));
+                    user.setRole(resultSet.getString("role"));
+                    java.sql.Timestamp createdAt = resultSet.getTimestamp("created_at");
+                    if (createdAt != null) {
+                        user.setCreatedAt(createdAt.toLocalDateTime());
+                    }
+                    users.add(user);
+                }
+                return users;
+            }
+        }
+    }
 }
