@@ -136,6 +136,15 @@ public class ProjectDAO {
         }
     }
 
+    public boolean updateProjectStatus(Connection connection, int projectId, String status) throws SQLException {
+        String sql = "UPDATE projects SET status = ? WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, status);
+            statement.setInt(2, projectId);
+            return statement.executeUpdate() > 0;
+        }
+    }
+
     private Project mapProject(ResultSet resultSet) throws SQLException {
         Project project = new Project();
         project.setId(resultSet.getInt("id"));

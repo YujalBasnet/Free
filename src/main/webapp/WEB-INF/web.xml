@@ -181,6 +181,23 @@
         <url-pattern>/client/bids/reject</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ContractServlet</servlet-name>
+        <servlet-class>com.freelancehub.freelancehub.controller.ContractServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContractServlet</servlet-name>
+        <url-pattern>/client/contracts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ContractServlet</servlet-name>
+        <url-pattern>/freelancer/contracts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ContractServlet</servlet-name>
+        <url-pattern>/freelancer/contracts/complete</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>

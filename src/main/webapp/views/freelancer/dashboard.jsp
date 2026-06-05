@@ -57,7 +57,7 @@
             <div class="action-grid">
                 <a class="action-card" href="${pageContext.request.contextPath}/freelancer/projects">Browse Projects</a>
                 <a class="action-card" href="${pageContext.request.contextPath}/views/freelancer/my-bids.jsp">My Bids</a>
-                <a class="action-card" href="${pageContext.request.contextPath}/views/freelancer/my-contracts.jsp">My Contracts</a>
+                <a class="action-card" href="${pageContext.request.contextPath}/freelancer/contracts">My Contracts</a>
                 <a class="action-card" href="${pageContext.request.contextPath}/views/freelancer/profile.jsp">Edit Profile</a>
             </div>
         </div>

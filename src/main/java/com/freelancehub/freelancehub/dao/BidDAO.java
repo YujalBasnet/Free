@@ -155,4 +155,26 @@ public class BidDAO {
             return statement.executeUpdate() > 0;
         }
     }
+
+    public com.freelancehub.freelancehub.model.Bid findBidForClient(Connection connection, int bidId, int clientId) throws SQLException {
+        String sql = "SELECT b.id, b.project_id, b.freelancer_id, b.status "
+                + "FROM bids b "
+                + "JOIN projects p ON b.project_id = p.id "
+                + "WHERE b.id = ? AND p.client_id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, bidId);
+            statement.setInt(2, clientId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (!resultSet.next()) {
+                    return null;
+                }
+                com.freelancehub.freelancehub.model.Bid bid = new com.freelancehub.freelancehub.model.Bid();
+                bid.setId(resultSet.getInt("id"));
+                bid.setProjectId(resultSet.getInt("project_id"));
+                bid.setFreelancerId(resultSet.getInt("freelancer_id"));
+                bid.setStatus(resultSet.getString("status"));
+                return bid;
+            }
+        }
+    }
 }

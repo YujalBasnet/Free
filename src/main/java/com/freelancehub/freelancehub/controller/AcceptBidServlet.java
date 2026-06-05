@@ -1,7 +1,10 @@
 package com.freelancehub.freelancehub.controller;
 
 import com.freelancehub.freelancehub.dao.BidDAO;
+import com.freelancehub.freelancehub.dao.ContractDAO;
 import com.freelancehub.freelancehub.dao.DBConnection;
+import com.freelancehub.freelancehub.dao.ProjectDAO;
+import com.freelancehub.freelancehub.model.Bid;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,6 +16,8 @@ import java.sql.Connection;
 
 public class AcceptBidServlet extends HttpServlet {
     private final BidDAO bidDAO = new BidDAO();
+    private final ContractDAO contractDAO = new ContractDAO();
+    private final ProjectDAO projectDAO = new ProjectDAO();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,9 +54,24 @@ public class AcceptBidServlet extends HttpServlet {
         }
 
         try (Connection connection = DBConnection.getConnection(getServletContext())) {
+            Bid bid = bidDAO.findBidForClient(connection, bidId, clientId);
+            if (bid == null) {
+                request.setAttribute("error", "Unable to locate the bid.");
+                request.getRequestDispatcher("/client/bids").forward(request, response);
+                return;
+            }
+
             boolean updated = bidDAO.updateBidStatusForClient(connection, bidId, clientId, status);
+            if (updated && "accepted".equalsIgnoreCase(status)) {
+                if (!contractDAO.hasContractForProjectAndFreelancer(connection, bid.getProjectId(), bid.getFreelancerId())) {
+                    contractDAO.createContract(connection, bid.getProjectId(), clientId, bid.getFreelancerId());
+                }
+                projectDAO.updateProjectStatus(connection, bid.getProjectId(), "in_progress");
+            }
             if (!updated) {
                 request.setAttribute("error", "Unable to update bid status.");
+                request.getRequestDispatcher("/client/bids").forward(request, response);
+                return;
             }
             response.sendRedirect(request.getContextPath() + "/client/bids");
         } catch (Exception exception) {
