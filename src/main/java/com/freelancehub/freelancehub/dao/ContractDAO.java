@@ -149,6 +149,20 @@ public class ContractDAO {
         return contracts;
     }
 
+    public int backfillContractsForFreelancer(Connection connection, int freelancerId) throws SQLException {
+        String sql = "INSERT INTO contracts (project_id, client_id, freelancer_id, start_date, status, created_at) "
+                + "SELECT b.project_id, p.client_id, b.freelancer_id, CURDATE(), 'active', NOW() "
+                + "FROM bids b "
+                + "JOIN projects p ON b.project_id = p.id "
+                + "WHERE b.freelancer_id = ? AND b.status = 'accepted' "
+                + "AND NOT EXISTS (SELECT 1 FROM contracts c "
+                + "WHERE c.project_id = b.project_id AND c.freelancer_id = b.freelancer_id)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, freelancerId);
+            return statement.executeUpdate();
+        }
+    }
+
     private Contract mapContract(ResultSet resultSet) throws SQLException {
         Contract contract = new Contract();
         contract.setId(resultSet.getInt("id"));
@@ -172,14 +186,29 @@ public class ContractDAO {
         if (projectTitle != null) {
             contract.setProjectTitle(projectTitle);
         }
-        String clientName = resultSet.getString("client_name");
-        if (clientName != null) {
-            contract.setClientName(clientName);
+        if (hasColumn(resultSet, "client_name")) {
+            String clientName = resultSet.getString("client_name");
+            if (clientName != null) {
+                contract.setClientName(clientName);
+            }
         }
-        String freelancerName = resultSet.getString("freelancer_name");
-        if (freelancerName != null) {
-            contract.setFreelancerName(freelancerName);
+        if (hasColumn(resultSet, "freelancer_name")) {
+            String freelancerName = resultSet.getString("freelancer_name");
+            if (freelancerName != null) {
+                contract.setFreelancerName(freelancerName);
+            }
         }
         return contract;
+    }
+
+    private boolean hasColumn(ResultSet resultSet, String columnName) throws SQLException {
+        java.sql.ResultSetMetaData metaData = resultSet.getMetaData();
+        int count = metaData.getColumnCount();
+        for (int index = 1; index <= count; index++) {
+            if (columnName.equalsIgnoreCase(metaData.getColumnLabel(index))) {
+                return true;
+            }
+        }
+        return false;
     }
 }
