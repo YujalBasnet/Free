@@ -144,6 +144,29 @@ public class BidDAO {
         return bids;
     }
 
+    public List<com.freelancehub.freelancehub.model.Bid> listAcceptedBidsForFreelancer(Connection connection, int freelancerId) throws SQLException {
+        String sql = "SELECT b.id, b.project_id, b.freelancer_id, b.status, p.client_id "
+                + "FROM bids b "
+                + "JOIN projects p ON b.project_id = p.id "
+                + "WHERE b.freelancer_id = ? AND b.status = 'accepted'";
+        List<com.freelancehub.freelancehub.model.Bid> bids = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, freelancerId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    com.freelancehub.freelancehub.model.Bid bid = new com.freelancehub.freelancehub.model.Bid();
+                    bid.setId(resultSet.getInt("id"));
+                    bid.setProjectId(resultSet.getInt("project_id"));
+                    bid.setFreelancerId(resultSet.getInt("freelancer_id"));
+                    bid.setStatus(resultSet.getString("status"));
+                    bid.setClientId(resultSet.getInt("client_id"));
+                    bids.add(bid);
+                }
+            }
+        }
+        return bids;
+    }
+
     public boolean updateBidStatusForClient(Connection connection, int bidId, int clientId, String status) throws SQLException {
         String sql = "UPDATE bids b JOIN projects p ON b.project_id = p.id "
                 + "SET b.status = ? "

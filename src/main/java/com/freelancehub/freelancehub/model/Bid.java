@@ -3,6 +3,7 @@
 public class Bid {
     private int id;
     private int projectId;
+    private int clientId;
     private int freelancerId;
     private String projectTitle;
     private String freelancerName;
@@ -28,6 +29,14 @@ public class Bid {
 
     public void setProjectId(int projectId) {
         this.projectId = projectId;
+    }
+
+    public int getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
     public int getFreelancerId() {
