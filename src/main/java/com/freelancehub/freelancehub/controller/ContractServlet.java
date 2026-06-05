@@ -1,10 +1,8 @@
 package com.freelancehub.freelancehub.controller;
 
-import com.freelancehub.freelancehub.dao.BidDAO;
 import com.freelancehub.freelancehub.dao.ContractDAO;
 import com.freelancehub.freelancehub.dao.DBConnection;
 import com.freelancehub.freelancehub.dao.ProjectDAO;
-import com.freelancehub.freelancehub.model.Bid;
 import com.freelancehub.freelancehub.model.Contract;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -17,7 +15,6 @@ import java.sql.Connection;
 import java.util.List;
 
 public class ContractServlet extends HttpServlet {
-	private final BidDAO bidDAO = new BidDAO();
 	private final ContractDAO contractDAO = new ContractDAO();
 	private final ProjectDAO projectDAO = new ProjectDAO();
 
@@ -40,11 +37,11 @@ public class ContractServlet extends HttpServlet {
 				return;
 			}
 			if ("freelancer".equalsIgnoreCase(role)) {
-				List<Bid> acceptedBids = bidDAO.listAcceptedBidsForFreelancer(connection, userId);
-				for (Bid bid : acceptedBids) {
-					if (!contractDAO.hasContractForProjectAndFreelancer(connection, bid.getProjectId(), userId)) {
-						contractDAO.createContract(connection, bid.getProjectId(), bid.getClientId(), userId);
-					}
+				try {
+					contractDAO.backfillContractsForFreelancer(connection, userId);
+				} catch (Exception exception) {
+					request.setAttribute("error", "Unable to sync accepted bids into contracts: " + exception.getMessage());
+					exception.printStackTrace();
 				}
 				List<Contract> contracts = contractDAO.listContractsForFreelancer(connection, userId);
 				request.setAttribute("contracts", contracts);
@@ -52,7 +49,8 @@ public class ContractServlet extends HttpServlet {
 				return;
 			}
 		} catch (Exception exception) {
-			request.setAttribute("error", "Unable to load contracts.");
+			request.setAttribute("error", "Unable to load contracts: " + exception.getMessage());
+			exception.printStackTrace();
 			if ("client".equalsIgnoreCase(role)) {
 				request.getRequestDispatcher("/views/client/contracts.jsp").forward(request, response);
 				return;
