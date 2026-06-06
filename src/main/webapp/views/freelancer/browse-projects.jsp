@@ -17,7 +17,7 @@
     <header class="freelancer-header">
         <div>
             <p class="eyebrow">Freelancer Workspace</p>
-            <h1>Browse available Projects</h1>
+            <h1>Browse Available Projects</h1>
             <p class="subtitle">Find opportunities and place your bids.</p>
         </div>
         <div class="freelancer-meta">
