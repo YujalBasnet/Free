@@ -18,7 +18,7 @@
         <div>
             <p class="eyebrow">Client Workspace</p>
             <h1>Active Contracts</h1>
-            <p class="subtitle">See progress and completion status.</p>
+            <p class="subtitle">Track progress, deadlines, and completion status.</p>
         </div>
         <div class="client-meta">
             <a class="logout" href="${pageContext.request.contextPath}/client/dashboard">Back to Dashboard</a>
