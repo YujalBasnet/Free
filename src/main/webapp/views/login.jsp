@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login - FreelanceHub</title>
+    <title>Login | FreelanceHub</title>
     <style>
         body {
             margin: 0;
