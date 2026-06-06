@@ -259,7 +259,7 @@
             <a href="#categories">Categories</a>
         </div>
     </div>
-    <div class="footer-bottom">© 2026 FreelanceHub. All rights reserved.</div>
+    <div class="footer-bottom">&copy; <%= java.util.Calendar.getInstance().get(java.util.Calendar.YEAR) %> FreelanceHub. All rights reserved.</div>
 </footer>
 </body>
 </html>
