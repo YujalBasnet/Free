@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Register - FreelanceHub</title>
+    <title>Register | FreelanceHub</title>
     <style>
         body {
             margin: 0;
@@ -111,7 +111,7 @@
     <div class="card">
         <div class="brand">FreelanceHub</div>
         <div class="title">Create account</div>
-        <div class="subtitle">Join and start hiring or freelancing Today.</div>
+        <div class="subtitle">Join and start hiring or freelancing today.</div>
         <%
             String error = (String) request.getAttribute("error");
             if (error != null) {
