@@ -18,7 +18,7 @@
         <div>
             <p class="eyebrow">Freelancer Workspace</p>
             <h1>My Contracts</h1>
-            <p class="subtitle">Track active work and mark contracts completed.</p>
+            <p class="subtitle">Track active work, mark milestones, and complete contracts.</p>
         </div>
         <div class="freelancer-meta">
             <a class="logout" href="${pageContext.request.contextPath}/freelancer/dashboard">Back to Dashboard</a>
