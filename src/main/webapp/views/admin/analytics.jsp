@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Empty right now</title>
+    <title>Empty Right Now</title>
 </head>
 <body>
 
