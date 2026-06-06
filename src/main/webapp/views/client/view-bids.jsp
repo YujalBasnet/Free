@@ -18,7 +18,7 @@
         <div>
             <p class="eyebrow">Client Workspace</p>
             <h1>Received Bids</h1>
-            <p class="subtitle">Review proposals from freelancers and compare offers.</p>
+            <p class="subtitle">Review proposals from freelancers and choose the best fit.</p>
         </div>
         <div class="client-meta">
             <a class="logout" href="${pageContext.request.contextPath}/client/dashboard">Back to Dashboard</a>
