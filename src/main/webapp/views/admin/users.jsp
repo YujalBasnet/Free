@@ -18,7 +18,7 @@
         <div>
             <p class="eyebrow">Control Center</p>
             <h1>Manage Users</h1>
-            <p class="subtitle">View all non-admin accounts on the platform.</p>
+            <p class="subtitle">View and manage all non-admin accounts on the platform.</p>
         </div>
         <div class="admin-meta">
             <a class="logout" href="${pageContext.request.contextPath}/admin/dashboard">Back to Dashboard</a>
