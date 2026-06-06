@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin's Dashboard | FreelanceHub</title>
+    <title>Admin Dashboard | FreelanceHub</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css" />
 </head>
 <body>
