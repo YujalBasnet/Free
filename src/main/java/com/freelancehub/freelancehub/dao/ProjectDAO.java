@@ -145,6 +145,23 @@ public class ProjectDAO {
         }
     }
 
+    public List<Project> listAllProjectsWithClientName(Connection connection) throws SQLException {
+        String sql = "SELECT p.id, p.client_id, u.name AS client_name, p.title, p.description, p.budget, p.deadline, p.status, p.created_at " +
+                "FROM projects p " +
+                "JOIN users u ON p.client_id = u.id " +
+                "ORDER BY p.created_at DESC";
+        try (PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+            List<Project> projects = new ArrayList<>();
+            while (resultSet.next()) {
+                Project project = mapProject(resultSet);
+                project.setClientName(resultSet.getString("client_name"));
+                projects.add(project);
+            }
+            return projects;
+        }
+    }
+
     private Project mapProject(ResultSet resultSet) throws SQLException {
         Project project = new Project();
         project.setId(resultSet.getInt("id"));
