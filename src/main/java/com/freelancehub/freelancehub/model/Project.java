@@ -9,6 +9,7 @@ public class Project {
     private java.time.LocalDate deadline;
     private String status;
     private java.time.LocalDateTime createdAt;
+    private String clientName;
 
     public Project() {
     }
@@ -75,5 +76,13 @@ public class Project {
 
     public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 }
