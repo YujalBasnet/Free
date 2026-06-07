@@ -187,5 +187,179 @@ body {
         flex-direction: column;
         align-items: flex-start;
     }
+    .search-filter-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }
+
+/* Modern Data Table Styles */
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 16px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+
+.data-table th {
+    background-color: #f8fafc;
+    color: #475569;
+    padding: 16px;
+    font-weight: 600;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.data-table td {
+    padding: 16px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+    vertical-align: middle;
+}
+
+.data-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.project-title-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.project-title-cell strong {
+    color: #0f172a;
+    font-size: 15px;
+}
+
+.project-desc {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.4;
+}
+
+.budget-cell {
+    font-weight: 700;
+    color: #0f172a;
+    font-family: monospace;
+    font-size: 15px;
+}
+
+/* Search and Filter Controls */
+.search-filter-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 280px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.search-input:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.filter-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #475569;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+}
+
+.filter-btn.active {
+    background: #4f46e5;
+    border-color: #4f46e5;
+    color: #fff;
+}
+
+/* Status Pill Badges */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background-color: #f1f5f9;
+    color: #475569;
+}
+
+.status-pill.status-open {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.status-pill.status-progress {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+.status-pill.status-completed {
+    background-color: #f1f5f9;
+    color: #475569;
+}
+
+.status-pill.status-closed {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Empty states */
+.empty-state, .no-results-msg {
+    text-align: center;
+    padding: 48px 24px;
+    color: #64748b;
+    font-size: 15px;
+    font-weight: 600;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px dashed #cbd5e1;
+    margin-top: 16px;
+}
+
 
