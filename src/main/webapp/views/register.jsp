@@ -141,7 +141,7 @@
                     <option value="admin">Admin</option>
                 </select>
             </div>
-            <button class="button" type="submit">Create account</button>
+            <button class="button" type="submit">Create Account</button>
         </form>
         <div class="footer">
             Already have an account? <a href="<%= request.getContextPath() %>/login">Login here</a>
