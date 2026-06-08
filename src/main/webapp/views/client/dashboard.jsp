@@ -18,7 +18,7 @@
         <div>
             <p class="eyebrow">Client Workspace</p>
             <h1>Your Project Hub</h1>
-            <p class="subtitle">Track your projects, bids, and contracts at a glance.</p>
+            <p class="subtitle">Track your Projects, Bids, and Contracts at a glance.</p>
         </div>
         <div class="client-meta">
             <span class="client-chip">Welcome, ${sessionScope.userName}</span>
