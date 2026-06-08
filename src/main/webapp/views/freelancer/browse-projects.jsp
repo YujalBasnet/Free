@@ -18,7 +18,7 @@
         <div>
             <p class="eyebrow">Freelancer Workspace</p>
             <h1>Browse Available Projects</h1>
-            <p class="subtitle">Find opportunities and place your bids.</p>
+            <p class="subtitle">Find Opportunities and place your bids.</p>
         </div>
         <div class="freelancer-meta">
             <a class="logout" href="${pageContext.request.contextPath}/freelancer/dashboard">Back to Dashboard</a>
