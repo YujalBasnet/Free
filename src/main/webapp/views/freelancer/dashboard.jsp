@@ -18,7 +18,7 @@
         <div>
             <p class="eyebrow">Freelancer Workspace</p>
             <h1>Opportunities & Contracts</h1>
-            <p class="subtitle">Track bids, contracts, and your performance.</p>
+            <p class="subtitle">Track Bids, contracts, and your performance.</p>
         </div>
         <div class="freelancer-meta">
             <span class="freelancer-chip">Welcome, ${sessionScope.userName}</span>
