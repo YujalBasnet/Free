@@ -18,7 +18,7 @@
         <div>
             <p class="eyebrow">Control Center</p>
             <h1>Admin Dashboard</h1>
-            <p class="subtitle">Monitor platform activity and take quick action.</p>
+            <p class="subtitle">Monitor platform Activity and take quick action.</p>
         </div>
         <div class="admin-meta">
             <span class="admin-chip">Role: Admin</span>
