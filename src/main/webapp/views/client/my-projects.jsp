@@ -18,7 +18,7 @@
         <div>
             <p class="eyebrow">Client Workspace</p>
             <h1>My Projects</h1>
-            <p class="subtitle">Track every project you have posted.</p>
+            <p class="subtitle">Track Every Project You Have Posted.</p>
         </div>
         <div class="client-meta">
             <a class="logout" href="${pageContext.request.contextPath}/client/projects/new">Post Project</a>
