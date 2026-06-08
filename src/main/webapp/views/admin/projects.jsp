@@ -11,7 +11,7 @@
         <div>
             <p class="eyebrow">Control Center</p>
             <h1>Manage Projects</h1>
-            <p class="subtitle">Admin oversees all projects on the platform.</p>
+            <p class="subtitle">Admin Oversees all projects on the platform.</p>
         </div>
         <div class="admin-meta">
             <a class="logout" href="${pageContext.request.contextPath}/admin/dashboard">Back to Dashboard</a>
