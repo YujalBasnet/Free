@@ -18,7 +18,7 @@
         <div>
             <p class="eyebrow">Client Workspace</p>
             <h1>Post a New Project</h1>
-            <p class="subtitle">Share the details and start receiving bids.</p>
+            <p class="subtitle">Share the Details and start receiving bids.</p>
         </div>
         <div class="client-meta">
             <a class="logout" href="${pageContext.request.contextPath}/client/dashboard">Back to Dashboard</a>
